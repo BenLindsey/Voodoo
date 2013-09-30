@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,20 @@
   <ItemGroup>
     <Compile Include="VoodooManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DynamicProxy\DynamicProxy.csproj">
+      <Project>{e1d53b69-4e98-4bff-a69b-a17ba76824bd}</Project>
+      <Name>DynamicProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dynamifier\Dynamifier.csproj">
+      <Project>{79a14c01-3a7b-459b-b630-09b60417d13b}</Project>
+      <Name>Dynamifier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Messaging\Messaging.csproj">
+      <Project>{3DA8ACA9-83AB-41BD-A095-2A5419BD1C1E}</Project>
+      <Name>Messaging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

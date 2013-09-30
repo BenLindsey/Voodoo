@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Messaging
 {
-    interface IMessageHandler
+    public interface IMessageHandler
     {
+        void HandleMessage(string message);
     }
 }

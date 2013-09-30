@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Messaging
 {
-    interface IMessageSink
+    public interface IMessageSink
     {
+        void Enqueue(string destination, string payload);
     }
 }
