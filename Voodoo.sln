@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "VoodooManager\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging", "Messaging\Messaging.csproj", "{3DA8ACA9-83AB-41BD-A095-2A5419BD1C1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{D61D1E1A-DF8B-495F-B375-C2CE68F54BAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{3DA8ACA9-83AB-41BD-A095-2A5419BD1C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DA8ACA9-83AB-41BD-A095-2A5419BD1C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DA8ACA9-83AB-41BD-A095-2A5419BD1C1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D61D1E1A-DF8B-495F-B375-C2CE68F54BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D61D1E1A-DF8B-495F-B375-C2CE68F54BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D61D1E1A-DF8B-495F-B375-C2CE68F54BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D61D1E1A-DF8B-495F-B375-C2CE68F54BAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

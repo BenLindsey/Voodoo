@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Dynamifier;
 using Messaging;
 using DynamicProxy;
 using Newtonsoft.Json;
 
-namespace VoodooManager
+namespace Manager
 {
-    public class VoodooManager<T> : IMessageHandler
+    public class VoodooManager<T>
     {
         private readonly T m_UnderlyingObject;
 
         private readonly IMessageSink m_MessageSink;
 
-        private readonly Dictionary<string, Action<dynamic>> m_Paths = new Dictionary<string, Action<dynamic>>(); 
+        private readonly Dictionary<string, Action<VoodooProxy>> m_Paths = new Dictionary<string, Action<VoodooProxy>>(); 
 
         public VoodooManager(T underlyingObject, IMessageSink messageSink)
         {
@@ -25,14 +21,27 @@ namespace VoodooManager
             m_MessageSink = messageSink;
         }
 
-        public void DefinePath<TTarget>(string pathName, Expression<TTarget> expression)
+        public void DefinePath<TTarget>(string pathName, Expression<Action<TTarget>> expression)
         {
-            m_Paths.Add(pathName, expression.AllowDynamicArguments());
+            m_Paths.Add(pathName, expression.AllowProxyArgument());
         }
 
-        public void HandleMessage(string message)
+        public void StartPath(string pathName, string remoteAddress, string localAddress)
         {
-            var messageBinding = JsonConvert.DeserializeObject<VoodooMessageBinding>(message);
+            dynamic proxy = new VoodooProxy(remoteAddress, localAddress, pathName, m_MessageSink);
+
+            try
+            {
+                m_Paths[pathName](proxy);
+            }
+            catch
+            {
+            }
+        }
+
+        public void HandleMessage(string payload)
+        {
+            var messageBinding = JsonConvert.DeserializeObject<VoodooMessageBinding>(payload);
 
             switch (messageBinding.Type)
             {
@@ -46,7 +55,7 @@ namespace VoodooManager
                     break;
 
                 default:
-                    throw new InvalidOperationException("Invalid message type");
+                    throw new InvalidOperationException("Invalid payload type");
             }
         }
 
